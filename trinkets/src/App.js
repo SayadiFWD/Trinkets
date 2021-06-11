@@ -4,6 +4,7 @@ import "./styles.css"
 import Home from "./components/Home"
 import ItemsList from "./components/ItemsList"
 import Item from "./components/Item"
+import items from "./data"
 
 function App() {
   return (
@@ -18,8 +19,12 @@ function App() {
     </nav>
       <header className="App-header">
       < Route exact path="/" component={Home}/>
-      <Route exact path="/item" component={ItemsList}/>
-      <Route path="/item/:id" component={Item}/>
+      <Route exact path="/item" render={()=>{
+        return <ItemsList data={items}/>
+      }}/>
+      <Route path="/item/:id" render={(props)=>{
+        return <Item {...props} data ={items}/>
+      }}/>
     
       </header>
     </div>

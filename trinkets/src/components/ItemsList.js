@@ -1,9 +1,10 @@
 import React from "react"
-import item from "../data"
+
 
 import ItemCard from "./ItemCard"
 
-const ItemsList =()=>{
+const ItemsList =(props)=>{
+   const item = props.data
     return(
         <div className="items-list-wrapper">
         {item.map(items =>(

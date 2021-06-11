@@ -1,8 +1,12 @@
-import React from "react"
-import items from "../data";
+import React from "react";
+import { NavLink, Route, Switch } from "react-router-dom";
+import Description from "./Description";
+import ItemsList from "./ItemsList";
+import Shipping from "./Shipping";
 
 export default function Item(props) {
-  const item = items.find(product => {
+  const data = props.data;
+  const item = data.find((product) => {
     return String(product.id) === props.match.params.id;
   });
 
@@ -17,8 +21,27 @@ export default function Item(props) {
           <h4>${item.price}</h4>
         </div>
       </div>
+      <div className="nav-links">
+      <nav className="nav-links">
+      <NavLink exact to={`/item/${props.match.params.id}`}>Description</NavLink>
+      <NavLink to={`/item/${props.match.params.id}/shipping`}>Shipping</NavLink>
+      </nav>
+      </div>
+    
+   
       <div>
-        <p className="item-description">{item.description}</p>
+        <Switch>
+
+        <Route
+        path="/item/:id/shipping"
+        render={() => <Shipping item={item.shipping} />}
+      />
+          <Route
+            path="/item/:id"
+            render={() => <Description item={item.description} />}
+          />
+
+        </Switch>
       </div>
     </div>
   );

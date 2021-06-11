@@ -34,10 +34,23 @@ nav {
   color: #1c5d76;
   font-weight: bold;
   margin-right: 1rem;
+  text-decoration: none;
 }
-.nav-links a.active,
+.nav-links a.active{
+  box-shadow: 5px 6xp 10px olive;
+  border: 0.5px solid orange;
+  border-radius: 5px;
+  background:olivedrab;
+  padding:5px;
+
+  text-emphasis: none;
+ 
+}
 .nav-links a:hover {
   border-bottom: 1px solid #1c5d76;
+  text-decoration: none;
+  
+  
 }
 
 .store-header {
